@@ -1,4 +1,13 @@
 <h1>DBC OVERFLOW!</h1>
+<% if @questions %>
 <%@questions.each do |question|%>
 <%=question.description%>
 <%end%>
+<%end%>
+<%=link_to "SignUp", new_user_path %>
+<%=link_to_unless(session[:current_user_id], "Login", new_session_path)%>
+<%=link_to_if(session[:current_user_id], "Logout", {controller: 'sessions', action: 'destroy'}, :method => :delete)%>
+
+<h2>Question</h2>
+...
+...

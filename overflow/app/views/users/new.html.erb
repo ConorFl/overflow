@@ -1,0 +1,11 @@
+<%= form_for :user, :url =>{:action =>"create"} do |f|%>
+Name:
+<%= f.text_field :name %>
+Email:
+<%= f.text_field :email %>
+Password
+<%= f.text_field :password %>
+Password Confirmation
+<%= f.text_field :password_confirmation %>
+<%=f.submit "Submit"%>
+<%end%>
