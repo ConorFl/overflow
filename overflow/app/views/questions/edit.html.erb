@@ -1,8 +1,8 @@
 <%= form_for :question, :url => { :action => "update" }, :html => {:method => "put"} do |f|%>
-<%= f.label :title%>
+<%= f.label :title%><br>
 <%=f.text_field :title, value: @question.title%>
 <br>
-<%= f.label :content%>
-<%=f.text_field :content, value: @question.content %>
+<%= f.label :content%><br>
+<%=f.text_area :content, value: @question.content %><br>
 <%=f.submit :submit %>
 <%end%>
