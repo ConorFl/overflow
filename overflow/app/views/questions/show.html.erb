@@ -1,10 +1,13 @@
 <br>
 <h2><%= @question.title%></h2>
 <p><%= @question.content %></p>
-
+<%= link_to "Edit Question", edit_question_path(@question) if logged_in?%><br><br>
+<h2><u>Answers</u></h2>
+<% if @answers %>
 <%@answers.each do |answer| %>
-<%=answer.content%><br>
+<%= answer.content%> <%=link_to "Edit Answer", edit_answer_path(answer) if logged_in?%><br>
 <%end%>
-
+<%end%>
 <br>
-<%= link_to "Answer", "/questions/#{@question.id}"+ new_answer_path %>
+<%= link_to "Add Answer", "/questions/#{@question.id}"+ new_answer_path if logged_in? %>
+

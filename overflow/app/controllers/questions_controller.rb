@@ -22,9 +22,14 @@ class QuestionsController < ApplicationController
   end
 
   def update
+    @question =Question.find(params[:id])
+    @question.update_attributes(params[:question])
+    @answers = @question.answers
+    render :show
   end
 
   def edit
+    @question = Question.find(params[:id])
   end
 
 end

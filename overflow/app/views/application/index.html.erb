@@ -4,7 +4,7 @@
 
 
 <h2>Question</h2>
-<%=link_to_if(session[:current_user_id], "Add Question" , new_question_path) %>
+<%=link_to "Add Question" , new_question_path if logged_in? %>
 <br>
 <%= render :partial => 'questions/questions' %>
 
