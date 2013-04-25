@@ -10,8 +10,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
-    if @user.valid?
-      @user.save
+    if @user.save
       @users = User.all 
       render :show
     else 

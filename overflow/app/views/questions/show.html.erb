@@ -1,0 +1,10 @@
+<br>
+<h2><%= @question.title%></h2>
+<p><%= @question.content %></p>
+
+<%@answers.each do |answer| %>
+<%=answer.content%><br>
+<%end%>
+
+<br>
+<%= link_to "Answer", "/questions/#{@question.id}"+ new_answer_path %>
