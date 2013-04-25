@@ -1,7 +1,7 @@
-class UsersController < ActionController::Base
+class UsersController < ApplicationController
 
   def index 
-
+    @questions = Question.all
   end
 
   def new
@@ -9,11 +9,7 @@ class UsersController < ActionController::Base
   end
 
   def create
-    @user = User.new(:name=>params[:user][:name],:email=>params[:user][:email])
-    #   :password=>params[:password],
-    #   :password_confirmation=>params[:password_confirm])
-    @user.password = params[:user][:password]
-    @user.password_confirmation = params[:user][:password_confirmation]
+    @user = User.new(params[:user])
     if @user.valid?
       @user.save
       @users = User.all 
@@ -28,8 +24,5 @@ class UsersController < ActionController::Base
     render :show
   end
 
-  def login_form
-    render :login
-  end
 end
 

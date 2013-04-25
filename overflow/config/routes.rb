@@ -1,6 +1,8 @@
 Overflow::Application.routes.draw do
   root :to => "application#index"
-  # get '/users/new' => "users#new", :as => :signup
   resources :users, except:[:index]
   resource :session
+  resources :questions
+  resources :answers
+  match "/questions/:id/answers/new" => "answers#new"
 end

@@ -1,4 +1,4 @@
-class SessionsController < ActionController::Base
+class SessionsController < ApplicationController
   def new
     @user_session = User.new
   end
@@ -9,6 +9,7 @@ class SessionsController < ActionController::Base
       session[:current_user_id] = @user.id
       redirect_to '/users/show'
     else 
+      flash[:notice] = "Invalid email and password"
       render :new
     end
   end
