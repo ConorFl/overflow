@@ -12,4 +12,6 @@ Overflow::Application.routes.draw do
   resources :responses
   match "/:respondable_type/:id/responses/new" => "responses#new"
   resources :votes
+  match "/:id/votes/upvotes" => "votes#upvotes"
+  match "/:id/votes/downvotes" => "votes#downvotes"
 end
