@@ -40,4 +40,5 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 group :development, :test do
   gem 'rspec-rails'
   gem 'shoulda-matchers'
+  gem 'capybara'
 end
