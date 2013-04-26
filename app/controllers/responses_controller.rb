@@ -12,8 +12,7 @@ class ResponsesController < ApplicationController
   end
 
   def show
-    @question = Question.find(params[:id])
-    
+    @question = Question.find(params[:id])  
   end
 
   def create
@@ -29,17 +28,6 @@ class ResponsesController < ApplicationController
     end
     @answers = @responding_to_obj.answers if @responding_to_obj.class.to_s == 'Question'
     redirect_to "/questions/#{@question_id}"
-  end
-
-  def destroy
-  end
-
-  def update
-
-  end
-
-  def edit
-
   end
 
 end

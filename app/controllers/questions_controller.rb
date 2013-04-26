@@ -3,9 +3,6 @@ class QuestionsController < ApplicationController
     @questions = Question.all
   end
 
-  def new
-  end
-
   def show
     @question = Question.find(params[:id])
     @answers = @question.answers
@@ -20,9 +17,6 @@ class QuestionsController < ApplicationController
     else
       render 'new'
     end
-  end
-
-  def destroy
   end
 
   def update

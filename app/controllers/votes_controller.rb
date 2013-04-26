@@ -28,7 +28,5 @@ def changevotes(type,howmuch)
       user.votes << @vote
       redirect_to question_path(@question)
     end 
-end
-
-
+  end
 end

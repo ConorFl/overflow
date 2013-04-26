@@ -10,13 +10,12 @@ class AnswersController < ApplicationController
   end
 
   def create
-    @answer = Answer.create(params[:answer])
+    @answer = Answer.create(:content => params[:answer][:content])
+    @question = Question.find(params[:answer][:question_id])
     @user = User.find(session[:current_user_id])
+    @question.answers << @answer
     @user.answers << @answer
     redirect_to root_path
-  end
-
-  def destroy
   end
 
   def update

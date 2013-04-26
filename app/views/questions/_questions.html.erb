@@ -1,6 +1,7 @@
 <%@questions = Question.all%>
 <% if @questions %>
 <%@questions.each do |question|%>
+<hr>
 <b><%= link_to question.title, question_path(question.id)%></b><br>
 <%=question.content%>
 

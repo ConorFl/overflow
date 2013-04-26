@@ -13,10 +13,6 @@ class SessionsController < ApplicationController
       render :new
     end
   end
-  
-  def show
-    # redirect_to '/users/show'
-  end
 
   def destroy
     session.clear

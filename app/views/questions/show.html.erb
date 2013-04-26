@@ -2,20 +2,21 @@
 <h2><%= @question.title%></h2>
 <p><%= @question.content %></p>
 <%if @question.votes.size !=0 %>
-<p><%=@question.votes.first.number %></p>
+<p><%=@question.votes.first.number %> votes </p>
 <%end%>
-<%= link_to "Vote up", "/#{@question.id}/votes/upvotes?class=#{@question.class}&question_id=#{@question.id}" if logged_in?%>
-<%= link_to "Vote down", "/#{@question.id}/votes/downvotes?class=#{@question.class}&question_id=#{@question.id}" if logged_in?%>
+<%= link_to "+", "/#{@question.id}/votes/upvotes?class=#{@question.class}&question_id=#{@question.id}" if logged_in?%>
+<%= link_to "-", "/#{@question.id}/votes/downvotes?class=#{@question.class}&question_id=#{@question.id}" if logged_in?%>
 <%=link_to "Respond", "/question/#{@question.id}" + new_response_path if logged_in?%>
 
-<h3>Responses</h3>
+<h3>Responses to </h3>
 <% @question.responses.each do |response| %>
+<hr>
 <p><%= response.content %> by <%=@question.user.name%></p>
 <%if response.votes.size !=0 %>
 <p><%=response.votes.first.number %></p>
 <%end%>
-<%= link_to "Vote up", "/#{response.id}/votes/upvotes?class=#{response.class}&question_id=#{@question.id}" if logged_in?%>
-<%= link_to "Vote down", "/#{response.id}/votes/downvotes?class=#{response.class}&question_id=#{@question.id}" if logged_in?%>
+<%= link_to "+", "/#{response.id}/votes/upvotes?class=#{response.class}&question_id=#{@question.id}" if logged_in?%>
+<%= link_to "-", "/#{response.id}/votes/downvotes?class=#{response.class}&question_id=#{@question.id}" if logged_in?%>
 <% end %>
 
 
@@ -25,22 +26,23 @@
 <h2><u>Answers</u></h2>
 <% if @answers %>
 <%@answers.each do |answer| %>
+<hr>
 <%= answer.content%> by <%=answer.user.name%> <br>
-
 <%=link_to "Edit Answer", edit_answer_path(answer) if logged_in?%><br>
+<hr>
 <%if answer.votes.size !=0 %>
 <p><%=answer.votes.first.number %></p>
 <%end%>
-<%= link_to "Vote up", "/#{answer.id}/votes/upvotes?class=#{answer.class}&question_id=#{@question.id}" if logged_in?%>
-<%= link_to "Vote down", "/#{answer.id}/votes/downvotes?class=#{answer.class}&question_id=#{@question.id}" if logged_in?%>
+<%= link_to "+", "/#{answer.id}/votes/upvotes?class=#{answer.class}&question_id=#{@question.id}" if logged_in?%>
+<%= link_to "-", "/#{answer.id}/votes/downvotes?class=#{answer.class}&question_id=#{@question.id}" if logged_in?%>
 <%answer.responses.each do |response|%>
 <%=response.content%> by <%=response.user.name%><br>
-<%= link_to "Vote up", "/#{response.id}/votes/upvotes?class=#{response.class}&question_id=#{@question.id}" if logged_in?%>
-<%= link_to "Vote down", "/#{response.id}/votes/downvotes?class=#{response.class}&question_id=#{@question.id}" if logged_in?%>
+<%= link_to "+", "/#{response.id}/votes/upvotes?class=#{response.class}&question_id=#{@question.id}" if logged_in?%>
+<%= link_to "-", "/#{response.id}/votes/downvotes?class=#{response.class}&question_id=#{@question.id}" if logged_in?%>
 <%end%>
 <%= link_to "Respond", "/answer/#{answer.id}" + new_response_path if logged_in?%>
 <%end%>
 <%end%>
 <br>
-<%= link_to "Add Answer", "/questions/#{@question.id}"+ new_answer_path if logged_in? %>
+<%= link_to "Add Answer", new_question_answer_path(@question) if logged_in? %>
 
