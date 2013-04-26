@@ -1,35 +1,41 @@
 class QuestionsController < ApplicationController
-
+  def index
+    @questions = Question.all
+  end
 
   def new
   end
 
   def show
     @question = Question.find(params[:id])
-    @answers =@question.answers
-
+    @answers = @question.answers
   end
 
   def create
-    @user = User.find(session[:current_user_id])
-    @question = Question.create(params[:question])
-    @user.questions << @question
-    @questions = Question.all
-    render :index
+    @question = current_user.questions.build(params[:question])
+
+    if @question.save
+      flash[:notice] = 'Your question was created successfully'
+      redirect_to questions_path # => '/questions'
+    else
+      render 'new'
+    end
   end
 
   def destroy
   end
 
   def update
-    @question =Question.find(params[:id])
-    @question.update_attributes(params[:question])
-    @answers = @question.answers
-    render :show
+    @question = Question.find(params[:id])
+
+    if @question.update_attributes(params[:question])
+      redirect_to @question
+    else
+      render 'edit'
+    end
   end
 
   def edit
     @question = Question.find(params[:id])
   end
-
 end

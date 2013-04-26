@@ -1,4 +1,4 @@
-<%= form_for :answer, :url => { :action => "update" }, :html => {:method => "put"} do |f|%>
+<%= form_for @answer do |f|%>
 <%= f.label :content%><br>
 <%= f.text_area :content, value: @answer.content %><br>
 <%= f.submit :submit %>

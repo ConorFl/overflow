@@ -1,3 +1,6 @@
 class Response < ActiveRecord::Base
-  # attr_accessible :title, :body
+  belongs_to :user
+  belongs_to :respondable, :polymorphic => true
+  attr_accessible :content
+  has_many :votes, :as => :voteable
 end

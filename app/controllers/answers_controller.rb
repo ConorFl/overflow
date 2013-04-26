@@ -11,6 +11,8 @@ class AnswersController < ApplicationController
 
   def create
     @answer = Answer.create(params[:answer])
+    @user = User.find(session[:current_user_id])
+    @user.answers << @answer
     redirect_to root_path
   end
 

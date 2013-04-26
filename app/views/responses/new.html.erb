@@ -1,0 +1,12 @@
+
+<% if @responding_to_obj.class == "Question" %> 
+<h3>Response for "<%=@responding_to_obj.title%>":</h3>
+<% end %>
+<p><%= @responding_to_obj.content %></p>
+<%= form_for :response, url: {action: 'create'} do |f| %>
+Response<br><%= f.text_area :content %><br>
+<%= f.hidden_field :respondable_id, :value => @responding_to_obj.id  %>
+<%= f.hidden_field :respondable_type, :value => @responding_to_obj.class %>
+<%= f.submit "Submit response" %>
+<% end %>
+
