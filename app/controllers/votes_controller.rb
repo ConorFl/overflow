@@ -8,6 +8,7 @@ def downvotes
      changevotes(params[:class],-1)
 end
 
+private
 def changevotes(type,howmuch)
       @typeClass = Kernel.const_get(type)
       user =User.find(session[:current_user_id])
